@@ -1,4 +1,11 @@
 .App {
   text-align: center;
-  color: tomato;
+}
+
+.red{
+  color: red;
+}
+
+.bold{
+  font-weight: bold;
 }
