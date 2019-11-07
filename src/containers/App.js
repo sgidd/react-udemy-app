@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react';
 import './App.css';
-import Person from './Person/Person'; // Anything with Caps Start as export is Default
 import Radium, {StyleRoot} from 'radium';
+import Persons from '../components/Persons/Persons';
 
 
 class App extends Component {
@@ -67,18 +67,11 @@ class App extends Component {
     if(this.state.showPersons) {
       persons = (
       <div>
-        {
-          this.state.persons.map(
-            (person, index) => {
-              return <Person 
-              name={person.name} 
-              age={person.age} 
-              click={ () => this.deletePersonHandler(index)}
-              key ={person.id}
-              changed = { (event) => this.listNameChangedHandler(event, person.id)} />
-            }
-          )
-        }
+        <Persons 
+        persons= {this.state.persons}
+        clicked={ this.deletePersonHandler}
+        changed = {this.listNameChangedHandler} 
+        />
       </div>
       );
 
