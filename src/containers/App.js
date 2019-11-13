@@ -38,8 +38,7 @@ class App extends Component {
     this.setState({persons:newPersons});
 
   }
-
-
+  
   togglePersonsHandler = () => {
     this.setState({showPersons : !this.state.showPersons});
   }
@@ -52,7 +51,6 @@ class App extends Component {
 
   render() {
   
-
     let persons = null;
     let cockpit =    <Cockpit 
     persons= {this.state.persons}
@@ -60,27 +58,17 @@ class App extends Component {
     showPersons = {this.state.showPersons}/>;
 
     if(this.state.showPersons) {
-      persons = (
-      <div>
-        <Persons 
-        persons= {this.state.persons}
-        clicked={ this.deletePersonHandler}
-        changed = {this.listNameChangedHandler} 
-        />
-      </div>
-      );
+      persons = <Persons 
+                persons= {this.state.persons}
+                clicked={ this.deletePersonHandler}
+                changed = {this.listNameChangedHandler} 
+                />;
 
-      cockpit = (
-        <Cockpit 
+      cockpit =  <Cockpit 
         persons= {this.state.persons}
         toggle = {this.togglePersonsHandler}
-        showPersons = {this.state.showPersons}/>
-      );
-
-    
+        showPersons = {this.state.showPersons}/>;  
     }
-
-  
 
     return (
       <StyleRoot>
@@ -89,10 +77,7 @@ class App extends Component {
         {persons}   
         </div>
       </StyleRoot>
-  
     );
-
-
   }
 }
 
