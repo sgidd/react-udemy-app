@@ -9,6 +9,8 @@ const person = (props) =>{
             width : '450px'
         }
     }
+
+    console.log("[Person.js] Rendering...")
     return (
         <div className="Person" style={style}>
             <h2  onClick= {props.click}>I am {props.name} and i am {props.age} years old</h2>

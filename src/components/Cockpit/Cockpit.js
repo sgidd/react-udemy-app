@@ -35,10 +35,10 @@ const cockpit = (props) => {
       assignedClasses.push('bold'); //classes= ['red','bold']
     }
 
-  
+    //console.log("[Cockpit.js] Rendering...");
     return (
         <StyleRoot>
-            <h1>Hi, I am a react app</h1>
+            <h1>{props.title}</h1>
             <p className={assignedClasses.join(' ')}>This is Really working!</p>
             <button 
             style={style}

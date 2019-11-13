@@ -7,7 +7,9 @@
 import React from 'react';
 import Person from './Person/Person'
 
-const persons = (props) => props.persons.map(
+const persons = (props) => {
+        console.log("[Persons.js] Rendering...");
+        return props.persons.map(
         (person, index) => {
           return <Person 
           name={person.name} 
@@ -18,5 +20,5 @@ const persons = (props) => props.persons.map(
         }
       );
 
-
+      }
 export default persons;
