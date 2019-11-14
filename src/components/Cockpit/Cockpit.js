@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './Cockpit.css';
 import Radium, {StyleRoot} from 'radium';
 
+
 /*
 useEffect()  is a react hook which runs on every component which runs on every render cycle of the component including the first [basically combination of componentDidMount() and componentDiDUpdate()  -- first and every update ]
 its the 2nd most react hook after the useState
@@ -13,7 +14,15 @@ const cockpit = (props) => {
     useEffect( () => {
       console.log('[cockpit.js] useEffect()');
       //HTTP reuqest -- can send here
-    });
+
+      setTimeout( () => {
+        alert('Saved Data to Cloud');
+      },1000);
+
+    } , [props.persons]);  // it will run only once persons prop change - not every time (first time will run by default)
+
+    // to run the useEffect on change in diff data you can write it more than once or list in above array -  [props.persons, props.showPersons]
+    // useEffect( ()={} , [props.xyz])
 
     const style ={
         backgroundColor : 'green',
