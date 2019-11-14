@@ -20,9 +20,25 @@ const cockpit = (props) => {
       },1000);
 
     } , [props.persons]);  // it will run only once persons prop change - not every time (first time will run by default)
+    
+    
 
     // to run the useEffect on change in diff data you can write it more than once or list in above array -  [props.persons, props.showPersons]
     // useEffect( ()={} , [props.xyz])
+
+
+      //To run it only on first time pass empty array
+      useEffect( () => {
+        console.log('[cockpit.js] useEffect()');
+        //HTTP reuqest -- can send here
+  
+        setTimeout( () => {
+          alert('Runs only on First Render Cycle');
+        },1000);
+  
+      } , []);
+
+
 
     const style ={
         backgroundColor : 'green',
