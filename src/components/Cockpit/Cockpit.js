@@ -12,7 +12,7 @@ const cockpit = (props) => {
 
     useEffect( () => {
       console.log('[cockpit.js] useEffect()');
-      //HTTP reuqest -- can send here...
+      //HTTP reuqest -- can send here
     });
 
     const style ={
