@@ -35,9 +35,24 @@ const cockpit = (props) => {
         setTimeout( () => {
           alert('Runs only on First Render Cycle');
         },1000);
+
+        return () => {
+          console.log('[Cockpit.js] cleanup in useEffect');
+        }
   
       } , []);
 
+      // when you pass the 2nd argument to the useEffect as emmty array , it will run after the compoennt renedered first and when it is unmounted
+      // when you dont pass any 2nd argument it will run all the time -- first return statement and console in below , which help if you want to remove something after every update or render cycle
+
+      // useEffect( () => {
+      //   console.log('[cockpit.js] 2nd useEffect()');
+
+      //   return () => {
+      //     console.log('[Cockpit.js] cleanup in 2nd useEffect');
+      //   }
+      // });
+      // it will run for every update cycle so can perform cleanup on every upadte cycle
 
 
     const style ={

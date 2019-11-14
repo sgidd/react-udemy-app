@@ -43,9 +43,14 @@ class Persons extends Component {
 
         /* componentWillReceiveProps and componentWillUpdate are not recomnded to use,
          as they have been renamed or will be removed in future */
+
         componentDidUpdate(prevProps, prevState, snapshot){
           console.log("[Persions.js] componentDidUpdate()");
           console.log(snapshot);
+        }
+
+        componentWillUnmount(){
+          console.log('[Persons.js] componentWillUnMount()');
         }
 }
 export default Persons;
