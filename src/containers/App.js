@@ -35,6 +35,24 @@ class App extends Component {
     console.log("[App.js] componentDidMount()");
   }
 
+  shouldComponentUpdate(nextProps, nextState){
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState){
+    console.log('[App.js] getSnapshotBeforeUpdate');
+    return {snapshot : 'snapshot before update'};
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot){
+    console.log('[App.js] componentDidUpdate');
+    console.log(snapshot);
+  }
+
+/*  componentDidMount(){}, shouldComponentUpdate(nextProps, nextState){}, componentDidUpdate(prevProps, prevState, snapshot){}
+  are the 3 important update lifecycle's */
+
   nameChangedHandler = (event) => {
     this.setState({
       persons : [
