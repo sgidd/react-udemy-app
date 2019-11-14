@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Cockpit.css';
 import Radium, {StyleRoot} from 'radium';
 
+/*
+useEffect()  is a react hook which runs on every component which runs on every render cycle of the component including the first [basically combination of componentDidMount() and componentDiDUpdate()  -- first and every update ]
+its the 2nd most react hook after the useState
+it combines the functinality or usecases of all the class based lifcycle hooks in one react hook 
+*/
+
 const cockpit = (props) => {
+
+    useEffect( () => {
+      console.log('[cockpit.js] useEffect()');
+      //HTTP reuqest -- can send here
+    });
 
     const style ={
         backgroundColor : 'green',
@@ -37,6 +48,7 @@ const cockpit = (props) => {
 
     //console.log("[Cockpit.js] Rendering...");
     return (
+
         <StyleRoot>
             <h1>{props.title}</h1>
             <p className={assignedClasses.join(' ')}>This is Really working!</p>
