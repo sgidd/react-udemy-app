@@ -32,17 +32,19 @@ const cockpit = (props) => {
         console.log('[cockpit.js] useEffect()');
         //HTTP reuqest -- can send here
   
-        setTimeout( () => {
+        const timer = setTimeout( () => {
           alert('Runs only on First Render Cycle');
         },1000);
 
         return () => {
+          clearTimeout(timer);
+          //when you reload and and press remove cockpt immediately before time expires it will not execute above timer
           console.log('[Cockpit.js] cleanup in useEffect');
         }
   
       } , []);
 
-      // when you pass the 2nd argument to the useEffect as emmty array , it will run after the compoennt renedered first and when it is unmounted
+      // when you pass the 2nd argument to the useEffect as emmty array , it will run after the compoennt renedered first (mounted) and when it is unmounted
       // when you dont pass any 2nd argument it will run all the time -- first return statement and console in below , which help if you want to remove something after every update or render cycle
 
       // useEffect( () => {
