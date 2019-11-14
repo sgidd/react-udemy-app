@@ -71,7 +71,6 @@ class App extends Component {
     const newPersons = [...this.state.persons];
     newPersons[findPersonIndex] = findPerson;
     this.setState({persons:newPersons});
-
   }
   
   togglePersonsHandler = () => {
