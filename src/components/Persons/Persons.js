@@ -4,42 +4,21 @@ import Person from './Person/Person'
 
 class Persons extends Component {
 
-        // static getDerivedStateFromProps(props,state){
-        //   console.log("[Persons.js] getDerivedStateFromProps(props,state)");
-        //   return state;
-        // }
-
-        // componentWillReceiveProps(props){
-        //   console.log("[Persons.js]  componenetWillReceiveProps");
-        // }
-
       
-
-
-        /* 
+          //checking for all props using this comp in shouldComponentChanged
           shouldComponentUpdate(nextProps, nextState){
-          console.log("[Persons.js] shouldComponentUpdate(nextProps, nextState)");
-          return true;
+            console.log("[Persons.js] shouldComponentUpdate(nextProps, nextState)");
+            if(nextProps.persons !== this.props.persons || nextProps.changed !== this.props.changed ||
+              nextProps.clicked !== this.props.clicked)
+            { 
+              return true ;
+            }
+            else { return false;}
           }
-        
-        here when we toggle person and remove the cockpit still it will run the all below lfecycle hooks:
-              [Persons.js] shouldComponentUpdate(nextProps, nextState)
-              Persons.js:23 [Persons.js] Rendering...
-              3Person.js:13 [Person.js] Rendering....
-              Persons.js:37 [Persons.js] getSnapshotBeforeUpdate(prevProps, prevState)
-              App.js:45 [App.js] getSnapshotBeforeUpdate
-              Cockpit.js:42 [Cockpit.js] cleanup in useEffect
-              Persons.js:49 [Persions.js] componentDidUpdate()
 
-              but no persons comp has been changed , still when there is change in app it will run the all child update lifecycle hooks after render
-              as per functionality, we can avoid this re rendering by updating shouldComponentUpdate() : see below
-        */
-
-       shouldComponentUpdate(nextProps, nextState){
-        console.log("[Persons.js] shouldComponentUpdate(nextProps, nextState)");
-        if(nextProps !== this.props){ return true ;}
-        else { return false;}
-      }
+          //instaed checking for all props using in this comp where we check for the all prop changes for given comp 
+          //we can use PureComponent
+          // which checks for any of the props has been changed --refer purecomp branch
 
 
         render(){
