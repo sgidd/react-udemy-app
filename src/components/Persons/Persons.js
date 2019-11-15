@@ -2,10 +2,8 @@ import React, {PureComponent} from 'react';
 import Person from './Person/Person'
 
 
-class Persons extends PureComponent {
-
       
-          //Precomponent that already mplements shouldCompUpdate with complete props check so that checks for any change in any props of this comp
+          //Purecomponent that already mplements shouldCompUpdate with complete props check so that checks for any change in any props of this comp
           // shouldComponentUpdate(nextProps, nextState){
           //   console.log("[Persons.js] shouldComponentUpdate(nextProps, nextState)");
           //   if(nextProps.persons !== this.props.persons || nextProps.changed !== this.props.changed ||
@@ -16,6 +14,9 @@ class Persons extends PureComponent {
           //   else { return false;}
           // }
 
+
+
+class Persons extends PureComponent {
 
 
         render(){
