@@ -29,7 +29,7 @@ const cockpit = (props) => {
 
       //To run it only on first time pass empty array
       useEffect( () => {
-        console.log('[cockpit.js] useEffect()');
+        console.log('[cockpit.js] useEffect() 2');
         //HTTP reuqest -- can send here
   
         const timer = setTimeout( () => {
@@ -38,11 +38,11 @@ const cockpit = (props) => {
 
         return () => {
           clearTimeout(timer);
-          //when you reload and and press remove cockpt immediately before time expires it will not execute above timer
+          //when you reload and and press remove cockpt immediately before timer expires it will not execute above timer
           console.log('[Cockpit.js] cleanup in useEffect');
         }
   
-      } , []);
+      });
 
       // when you pass the 2nd argument to the useEffect as emmty array , it will run after the compoennt renedered first (mounted) and when it is unmounted
       // when you dont pass any 2nd argument it will run all the time -- first return statement and console in below , which help if you want to remove something after every update or render cycle
@@ -80,11 +80,11 @@ const cockpit = (props) => {
 
     const assignedClasses =[];
 
-    if(props.persons.length <=2){
+    if(props.personsLength <=2){
       assignedClasses.push('red');//classes= ['red']
     }
 
-    if(props.persons.length <=1){
+    if(props.personsLength <=1){
       assignedClasses.push('bold'); //classes= ['red','bold']
     }
 
@@ -101,4 +101,4 @@ const cockpit = (props) => {
     );
 };
 
-export default Radium(cockpit);
+export default React.memo(Radium(cockpit));
