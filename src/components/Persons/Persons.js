@@ -12,11 +12,30 @@ class Persons extends Component {
         //   console.log("[Persons.js]  componenetWillReceiveProps");
         // }
 
-        shouldComponentUpdate(nextProps, nextState){
+         /* 
+          shouldComponentUpdate(nextProps, nextState){
           console.log("[Persons.js] shouldComponentUpdate(nextProps, nextState)");
           return true;
-        }
+          }
+        
+        here when we toggle person and remove the cockpit still it will run the all below lfecycle hooks:
+              [Persons.js] shouldComponentUpdate(nextProps, nextState)
+              Persons.js:23 [Persons.js] Rendering...
+              3Person.js:13 [Person.js] Rendering....
+              Persons.js:37 [Persons.js] getSnapshotBeforeUpdate(prevProps, prevState)
+              App.js:45 [App.js] getSnapshotBeforeUpdate
+              Cockpit.js:42 [Cockpit.js] cleanup in useEffect
+              Persons.js:49 [Persions.js] componentDidUpdate()
 
+              but no persons comp has been changed , still when there is change in app it will run the all child update lifecycle hooks after render
+              as per functionality, we can avoid this re rendering by updating shouldComponentUpdate() : see below
+        */
+
+       shouldComponentUpdate(nextProps, nextState){
+        console.log("[Persons.js] shouldComponentUpdate(nextProps, nextState)");
+        if(nextProps.persons !== this.props.persons){ return true ;}
+        else { return false;}
+      }
 
         render(){
           console.log("[Persons.js] Rendering...");
