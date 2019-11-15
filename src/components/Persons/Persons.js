@@ -1,24 +1,21 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import Person from './Person/Person'
 
 
-class Persons extends Component {
+class Persons extends PureComponent {
 
       
-          //checking for all props using this comp in shouldComponentChanged
-          shouldComponentUpdate(nextProps, nextState){
-            console.log("[Persons.js] shouldComponentUpdate(nextProps, nextState)");
-            if(nextProps.persons !== this.props.persons || nextProps.changed !== this.props.changed ||
-              nextProps.clicked !== this.props.clicked)
-            { 
-              return true ;
-            }
-            else { return false;}
-          }
+          //Precomponent that already mplements shouldCompUpdate with complete props check so that checks for any change in any props of this comp
+          // shouldComponentUpdate(nextProps, nextState){
+          //   console.log("[Persons.js] shouldComponentUpdate(nextProps, nextState)");
+          //   if(nextProps.persons !== this.props.persons || nextProps.changed !== this.props.changed ||
+          //     nextProps.clicked !== this.props.clicked)
+          //   { 
+          //     return true ;
+          //   }
+          //   else { return false;}
+          // }
 
-          //instaed checking for all props using in this comp where we check for the all prop changes for given comp 
-          //we can use PureComponent
-          // which checks for any of the props has been changed --refer purecomp branch
 
 
         render(){
