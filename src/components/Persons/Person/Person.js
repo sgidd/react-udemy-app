@@ -24,6 +24,13 @@ import Aux from '../../../hoc/Auxillary'
     
     there create a high order component named Aux , which act as root jsx - import here to use and wrap around 
 
+    2a : there is bult in aux compoenent '<React.Fragment>'
+
+    or import  import React, {Component, Fragment} from 'react';
+
+    and simply use <Fragment>
+    
+
  */
 class Person extends Component{
     render(){
@@ -34,6 +41,7 @@ class Person extends Component{
         }
     
         console.log("[Person.js] Rendering....")
+        //1.
         // return [
             
         //         <h2 key ="ele1" onClick= {this.props.click}>I am {this.props.name} and i am {this.props.age} years old</h2>,
@@ -42,13 +50,27 @@ class Person extends Component{
          
         // ];
 
-        return (
-            <Aux>
+
+        //2.
+        // return (
+        //     <Aux>
+        //       <h2 onClick= {this.props.click}>I am {this.props.name} and i am {this.props.age} years old</h2>  
+        //       <p>{this.props.children}</p>
+        //       <input type="text" onChange={this.props.changed} value ={this.props.name} />
+        //     </Aux>
+        // );
+
+        //2a.
+
+          return (
+            <React.Fragment>
               <h2 onClick= {this.props.click}>I am {this.props.name} and i am {this.props.age} years old</h2>  
               <p>{this.props.children}</p>
               <input type="text" onChange={this.props.changed} value ={this.props.name} />
-            </Aux>
+            </React.Fragment>
         );
+
+
     }
    
 };
