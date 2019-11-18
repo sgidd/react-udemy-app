@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import  './Person.css';
 import Radium from 'radium';
 
+import Aux from '../../../hoc/Auxillary'
+
 /* Generally you have to return only one JSX element inside of component,
  that JSX element can contain other jsx elements but you must have only one root jsx element
 
@@ -17,6 +19,11 @@ import Radium from 'radium';
 
     return adjusant elements in array with each separating by comma and having unique key
 
+ 2: Create a wraping component that does not get render any html code or does show up in in dom / on inspect but to there fulfill reacts requirement of having the wrapping root jsx
+    see the solution in new folder 'hoc'
+    
+    there create a high order component named Aux , which act as root jsx - import here to use and wrap around 
+
  */
 class Person extends Component{
     render(){
@@ -27,13 +34,21 @@ class Person extends Component{
         }
     
         console.log("[Person.js] Rendering....")
-        return [
+        // return [
             
-                <h2 key ="ele1" onClick= {this.props.click}>I am {this.props.name} and i am {this.props.age} years old</h2>,
-                <p key="ele2">{this.props.children}</p>,
-                <input key="ele3" type="text" onChange={this.props.changed} value ={this.props.name} />
+        //         <h2 key ="ele1" onClick= {this.props.click}>I am {this.props.name} and i am {this.props.age} years old</h2>,
+        //         <p key="ele2">{this.props.children}</p>,
+        //         <input key="ele3" type="text" onChange={this.props.changed} value ={this.props.name} />
          
-        ];
+        // ];
+
+        return (
+            <Aux>
+              <h2 onClick= {this.props.click}>I am {this.props.name} and i am {this.props.age} years old</h2>  
+              <p>{this.props.children}</p>
+              <input type="text" onChange={this.props.changed} value ={this.props.name} />
+            </Aux>
+        );
     }
    
 };
