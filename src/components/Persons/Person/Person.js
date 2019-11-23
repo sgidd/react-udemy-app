@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import  './Person.css';
 import Radium from 'radium';
 
-import Aux from '../../../hoc/Auxillary'
+import Aux from '../../../hoc/Auxillary';
+import withClass from '../../../hoc/withClass2';
 
 /* Generally you have to return only one JSX element inside of component,
  that JSX element can contain other jsx elements but you must have only one root jsx element
@@ -62,12 +63,22 @@ class Person extends Component{
 
         //2a.
 
-          return (
-            <React.Fragment>
+        //   return (
+        //     <React.Fragment>
+        //       <h2 onClick= {this.props.click}>I am {this.props.name} and i am {this.props.age} years old</h2>  
+        //       <p>{this.props.children}</p>
+        //       <input type="text" onChange={this.props.changed} value ={this.props.name} />
+        //     </React.Fragment>
+        // );
+
+
+        //video 107 - passing indirect props
+        return (
+            <Aux>
               <h2 onClick= {this.props.click}>I am {this.props.name} and i am {this.props.age} years old</h2>  
               <p>{this.props.children}</p>
               <input type="text" onChange={this.props.changed} value ={this.props.name} />
-            </React.Fragment>
+            </Aux>
         );
 
 
@@ -75,4 +86,4 @@ class Person extends Component{
    
 };
 
-export default Radium(Person);
+export default withClass(Radium(Person) , "Person");
