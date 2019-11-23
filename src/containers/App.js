@@ -4,6 +4,8 @@ import './App.css';
 import Radium, {StyleRoot} from 'radium';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import WithClass from '../hoc/WithClass';
+
 
 
 class App extends Component {
@@ -120,13 +122,13 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
-        <div className="App">
+      
+        <WithClass classes="App">
         <button onClick = {() => this.setState({showCockpit : false})}>Remove Cockpit</button>
         {cockpit}
         {persons}   
-        </div>
-      </StyleRoot>
+        </WithClass>
+    
     );
   }
 }
