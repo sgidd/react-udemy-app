@@ -1,10 +1,12 @@
 
 import React, { Component } from 'react';
-import './App.css';
+import   './App.css';
 import Radium, {StyleRoot} from 'radium';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import WithClass from '../hoc/WithClass';
+import Aux from '../hoc/Auxillary';
+import withClass from '../hoc/withClass2';
 
 
 
@@ -123,16 +125,16 @@ class App extends Component {
 
     return (
       
-        <WithClass classes="App">
+        <Aux>
         <button onClick = {() => this.setState({showCockpit : false})}>Remove Cockpit</button>
         {cockpit}
         {persons}   
-        </WithClass>
+        </Aux>
     
     );
   }
 }
 
-export default Radium(App);
+export default withClass(Radium(App) , "App");
 
 
