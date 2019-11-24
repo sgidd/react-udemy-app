@@ -37,6 +37,19 @@ import PropTypes from 'prop-types';
 
  */
 class Person extends Component{
+
+    //110 in regular javascript
+    //it will work but fst input will get focus always bcoz query selector selects the fst input it finds and its not react approch
+    
+    componentDidMount(){
+       // document.querySelector('input').focus();
+       this.inputElement.focus();
+    }
+    //if we want to focus on last input element  it is optimal way
+    //react provides easier way to select the element , concept called Refs switch
+    //on any element yu want to select need to add ref keyword and pass a anonymous function
+    //here argument you get is the the reference to the element you placed the ref on which yu can use it in body 
+    //or other place can store it in global property  and can use anywhere in app
     render(){
         const style= {
             '@media (min-width : 500px )':{
@@ -80,7 +93,12 @@ class Person extends Component{
             <Aux>
               <h2 onClick= {this.props.click}>I am {this.props.name} and i am {this.props.age} years old</h2>  
               <p>{this.props.children}</p>
-              <input type="text" onChange={this.props.changed} value ={this.props.name} />
+              <input 
+              type="text" 
+            //   ref ={(inputEl) => {inputEl.focus();}}
+            ref= {(inputE) => {this.inputElement = inputE}}
+              onChange={this.props.changed} 
+              value ={this.props.name} />
             </Aux>
         );
 

@@ -18,7 +18,7 @@ class App extends Component {
 
   state = {
     persons : [
-      {id: 1, name: "Sunil" , age: '26'},
+      {id: 1, name: "Sunil" , age: 26},
       {id: 2, name: "Manoj" , age: 27},
       {id: 3, name: "pj" , age: 28}
     ],
