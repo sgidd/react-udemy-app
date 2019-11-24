@@ -5,6 +5,9 @@ import Radium from 'radium';
 import Aux from '../../../hoc/Auxillary';
 import withClass from '../../../hoc/withClass2';
 
+//109
+import PropTypes from 'prop-types';
+
 /* Generally you have to return only one JSX element inside of component,
  that JSX element can contain other jsx elements but you must have only one root jsx element
 
@@ -84,6 +87,13 @@ class Person extends Component{
 
     }
    
+};
+
+Person.propTypes = {
+    click : PropTypes.func,
+    name : PropTypes.string,
+    age : PropTypes.number,
+    changed : PropTypes.func
 };
 
 export default withClass(Radium(Person) , "Person");
