@@ -37,13 +37,18 @@ import PropTypes from 'prop-types';
 
  */
 class Person extends Component{
+    constructor(props){
+        super(props);
+        this.inputElementRef = React.createRef();
+    }
 
     //110 in regular javascript
     //it will work but fst input will get focus always bcoz query selector selects the fst input it finds and its not react approch
     
     componentDidMount(){
        // document.querySelector('input').focus();
-       this.inputElement.focus();
+       //this.inputElement.focus(); this works only in class based as 'this' is class property not in functional
+       this.inputElementRef.current.focus();
     }
     //if we want to focus on last input element  it is optimal way
     //react provides easier way to select the element , concept called Refs switch
@@ -96,7 +101,9 @@ class Person extends Component{
               <input 
               type="text" 
             //   ref ={(inputEl) => {inputEl.focus();}}
-            ref= {(inputE) => {this.inputElement = inputE}}
+            //ref= {(inputE) => {this.inputElement = inputE}}
+            //using controctur to crate ref 
+            ref={ this.inputElementRef}
               onChange={this.props.changed} 
               value ={this.props.name} />
             </Aux>
