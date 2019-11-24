@@ -24,7 +24,8 @@ class App extends Component {
     ],
     otherStateProp: "other state property",
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter : 0
   }
 
   static getDerivedStateFromProps(props,state){
@@ -75,7 +76,18 @@ class App extends Component {
 
     const newPersons = [...this.state.persons];
     newPersons[findPersonIndex] = findPerson;
-    this.setState({persons:newPersons});
+    //this.setState({persons:newPersons});
+    
+    //108 - using setState correctly
+    this.setState(
+      (prevState, props)=> {
+        console.log(this.state.changeCounter);
+        return {
+          persons : newPersons,
+          changeCounter : prevState.changeCounter +1
+        }
+      }
+    );
 
   }
   
