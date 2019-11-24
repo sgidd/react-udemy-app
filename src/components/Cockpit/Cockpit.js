@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Cockpit.css';
 import Radium, {StyleRoot} from 'radium';
 
@@ -11,6 +11,9 @@ it combines the functinality or usecases of all the class based lifcycle hooks i
 
 const cockpit = (props) => {
 
+  const toggleBtnRef = useRef(null);
+  
+
     useEffect( () => {
       console.log('[cockpit.js] useEffect()');
       //HTTP reuqest -- can send here
@@ -18,6 +21,7 @@ const cockpit = (props) => {
       setTimeout( () => {
         alert('Saved Data to Cloud');
       },1000);
+      toggleBtnRef.current.click();
 
     } , [props.persons]);  // it will run only once persons prop change - not every time (first time will run by default)
     
@@ -96,6 +100,7 @@ const cockpit = (props) => {
             <p className={assignedClasses.join(' ')}>This is Really working!</p>
             <button 
             style={style}
+            ref={toggleBtnRef}
             onClick={props.toggle} >Toggle Persons</button>
         </StyleRoot>
     );
